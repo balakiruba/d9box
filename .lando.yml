@@ -1,0 +1,24 @@
+name: d9box
+recipe: drupal9
+config:
+  php: '7.4'
+  composer_version: '2.0.7'
+  via: apache:2.4
+  webroot: web
+  database: mysql:5.7
+  drush: true
+  xdebug: true
+  config:
+    php: lando/config/php.ini
+
+services:
+  node:
+    type: node:12.16
+  appserver:
+    xdebug: true
+    config:
+      php: lando/config/php.ini
+    type: php:7.4
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=appserver"
